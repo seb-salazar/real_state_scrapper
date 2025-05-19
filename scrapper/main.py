@@ -4,12 +4,14 @@ from scrapper import Scrapper
 
 def main():
     print("started")
+
+    # Base scrapper, to get all elements from each city (comune)
     scrapper = Scrapper(base_url="https://www.portalinmobiliario.com/venta/departamento")
 
     # for each city
     for city in cities:
         # Test initially with one city
-        if city != "nunoa":
+        if city not in ("nunoa", "las-condes"):
             continue
 
         # scrape and save all the data

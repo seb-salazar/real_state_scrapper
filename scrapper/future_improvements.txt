@@ -1,0 +1,1 @@
+[] get the dedicated info from each property by using its url (lat,long,nearby schools, etc)
