@@ -1,1 +1,1 @@
-# Real Estate Scraper (RES)
+# Real Estate AI Scrapper
