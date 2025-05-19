@@ -1,0 +1,2 @@
+[] get the uuids to track price changes
+[] get the links, then the lat lng
