@@ -43,3 +43,6 @@ APARTMENT_RESULT_GRID_ELEMENT = "poly-card__content"
 
 CURRENCY_SYMBOL_CLASS = "andes-money-amount__currency-symbol"  # UF, $
 AMOUNT_CLASS = "andes-money-amount__fraction"
+
+# S3
+BUCKET_NAME = "ss-real-state-ai"

@@ -1,5 +1,5 @@
-from utils import write_json_into_file
-from constants import cities
+from utils import write_json_into_file, upload_to_s3
+from constants import *
 from scrapper import Scrapper
 
 def main():
@@ -11,13 +11,16 @@ def main():
     # for each city
     for city in cities:
         # Test initially with one city
-        if city not in ("nunoa", "las-condes"):
+        if city not in ("nunoa"): #("nunoa", "las-condes")
             continue
 
         # scrape and save all the data
         apartments_data = scrapper.get_global_data(city=city)
         for data in apartments_data:
-            write_json_into_file(data=data,file_name=city)
+            # write the csv file
+            file_path = write_json_into_file(data=data,file_name=city)
+            # upload to s3
+            upload_to_s3(file_path=file_path, bucket_name=BUCKET_NAME, object_key=f'scrapper/{file_path}')
 
     print("done")
 
