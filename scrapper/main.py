@@ -7,7 +7,7 @@ def main():
     print("started")
 
     # Base scrapper, to get all elements from each city (comune)
-    scrapper = Scrapper(base_url="https://www.portalinmobiliario.com/venta/departamento")
+    scrapper = Scrapper(base_url=os.environ['SCRAPPING_MAIN_URL'])
 
     # Get the absolute path to the scrapper directory
     scrapper_dir = os.path.dirname(os.path.abspath(__file__))
@@ -16,7 +16,7 @@ def main():
     # for each city
     for city in cities:
         # Test initially with one city
-        if city not in ("nunoa", "las-condes"): #("nunoa")
+        if city not in ("nunoa", "las-condes", "vitacura"): #("nunoa")
             continue
 
         # scrape and save all the data
@@ -28,7 +28,7 @@ def main():
     # upload to s3
     upload_folder_to_s3(
         local_folder=data_dir,
-        bucket_name=BUCKET_NAME,
+        bucket_name=os.environ['BUCKET_NAME'],
         s3_folder_prefix='scrapper/data'
     )
 

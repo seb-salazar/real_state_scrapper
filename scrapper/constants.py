@@ -1,8 +1,3 @@
-#    (?!["])(.*?)\n
-# uncapitalize: (\w) -> \L$1
-# space between words: \b\s+\b (\b is word boundary, \w includes the word)
-
-
 cities = [
     "santiago",
     "conchali",
@@ -43,6 +38,3 @@ APARTMENT_RESULT_GRID_ELEMENT = "poly-card__content"
 
 CURRENCY_SYMBOL_CLASS = "andes-money-amount__currency-symbol"  # UF, $
 AMOUNT_CLASS = "andes-money-amount__fraction"
-
-# S3
-BUCKET_NAME = "ss-real-state-ai"

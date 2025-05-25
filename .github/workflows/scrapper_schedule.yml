@@ -2,7 +2,7 @@ name: Scrapper Schedule
 
 on:
   schedule:
-    - cron:  '0 22 * * 0'  # '0 7 * * 1'  Every Monday at 07:00 UTC
+    - cron:  '25 23 * * 0'  # '0 7 * * 1'  Every Monday at 07:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -13,6 +13,8 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
+      SCRAPPING_MAIN_URL: ${{ secrets.SCRAPPING_MAIN_URL }}
+      BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
 
     steps:
       - name: Checkout repo
