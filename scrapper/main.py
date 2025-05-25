@@ -21,17 +21,17 @@ def main():
             # write the csv files
             write_json_into_file(data=data,file_name=city)
 
-        # upload to s3
-        # get current date and time to create folder
-        now = datetime.now()
-        # Format as string (e.g., '2025-05-18')
-        date_string = now.strftime("%Y-%m-%d")
+    # upload to s3
+    # get current date and time to create folder
+    now = datetime.now()
+    # Format as string (e.g., '2025-05-18')
+    date_string = now.strftime("%Y-%m-%d")
 
-        upload_folder_to_s3(
-            local_folder='scrapper/data',
-            bucket_name=BUCKET_NAME,
-            s3_folder_prefix=f'scrapper/data/{date_string}'
-        )
+    upload_folder_to_s3(
+        local_folder='scrapper/data',
+        bucket_name=BUCKET_NAME,
+        s3_folder_prefix=f'scrapper/data/{date_string}'
+    )
 
     print("done")
 
