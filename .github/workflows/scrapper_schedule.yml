@@ -2,7 +2,7 @@ name: Scrapper Schedule
 
 on:
   schedule:
-    - cron: '0 7 * * 1'  # Every Monday at 07:00 UTC
+    - cron:  '55 17 * * 0'  # '0 7 * * 1'  Every Monday at 07:00 UTC
   workflow_dispatch:
 
 jobs:
