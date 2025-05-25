@@ -1,12 +1,17 @@
 from utils import write_json_into_file, upload_folder_to_s3
 from constants import *
 from scrapper import Scrapper
+import os
 
 def main():
     print("started")
 
     # Base scrapper, to get all elements from each city (comune)
     scrapper = Scrapper(base_url="https://www.portalinmobiliario.com/venta/departamento")
+
+    # Get the absolute path to the scrapper directory
+    scrapper_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(scrapper_dir, "data")
 
     # for each city
     for city in cities:
@@ -18,13 +23,13 @@ def main():
         apartments_data = scrapper.get_global_data(city=city)
         for data in apartments_data:
             # write the csv files
-            write_json_into_file(data=data,file_name=city)
+            write_json_into_file(data=data, file_name=city)
 
     # upload to s3
     upload_folder_to_s3(
-        local_folder='scrapper/data',
+        local_folder=data_dir,
         bucket_name=BUCKET_NAME,
-        s3_folder_prefix=f'scrapper/data'
+        s3_folder_prefix='scrapper/data'
     )
 
     print("done")
