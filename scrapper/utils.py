@@ -12,7 +12,7 @@ def write_json_into_file(data: dict, file_name: str = "example") -> str:
     # Format as string (e.g., '2025-05-18')
     date_string = now.strftime("%Y-%m-%d")
 
-    directory = f"./data/{date_string}"
+    directory = f"data/{date_string}"
 
     # Check if the directory exists
     if not os.path.exists(directory):
