@@ -1,7 +1,6 @@
 from utils import write_json_into_file, upload_folder_to_s3
 from constants import *
 from scrapper import Scrapper
-from datetime import datetime
 
 def main():
     print("started")
@@ -22,15 +21,10 @@ def main():
             write_json_into_file(data=data,file_name=city)
 
     # upload to s3
-    # get current date and time to create folder
-    now = datetime.now()
-    # Format as string (e.g., '2025-05-18')
-    date_string = now.strftime("%Y-%m-%d")
-
     upload_folder_to_s3(
         local_folder='scrapper/data',
         bucket_name=BUCKET_NAME,
-        s3_folder_prefix=f'scrapper/data/{date_string}'
+        s3_folder_prefix=f'scrapper/data'
     )
 
     print("done")

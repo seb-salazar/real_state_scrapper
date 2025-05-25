@@ -1,20 +1,26 @@
 import boto3
 import json
 import os
+from datetime import datetime
 
 def write_json_into_file(data: dict, file_name: str = "example"):
     if not data:
         return None
 
+    # get current date and time to create folder
+    now = datetime.now()
+    # Format as string (e.g., '2025-05-18')
+    date_string = now.strftime("%Y-%m-%d")
+
     # Check if the directory exists
-    if not os.path.exists("./data"):
+    if not os.path.exists(f"./data/{date_string}"):
         # If it doesn't exist, create it
-        os.makedirs("./data")
+        os.makedirs(f"./data/{date_string}")
 
     # Serializing json
     json_object = json.dumps(data)
     
-    file_path = f"./data/{file_name}.json"
+    file_path = f"./data/{date_string}/{file_name}.json"
 
     # Writing to sample.json
     with open(file_path, "w") as outfile:
