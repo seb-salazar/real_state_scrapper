@@ -28,7 +28,7 @@ def main():
         date_string = now.strftime("%Y-%m-%d")
 
         upload_folder_to_s3(
-            local_folder='./scrapper/data',
+            local_folder='scrapper/data',
             bucket_name=BUCKET_NAME,
             s3_folder_prefix=f'scrapper/data/{date_string}'
         )
