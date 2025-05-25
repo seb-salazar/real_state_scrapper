@@ -2,7 +2,7 @@ name: Scrapper Schedule
 
 on:
   schedule:
-    - cron:  '55 17 * * 0'  # '0 7 * * 1'  Every Monday at 07:00 UTC
+    - cron:  '0 22 * * 0'  # '0 7 * * 1'  Every Monday at 07:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -28,5 +28,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scrapper/requirements.txt
 
-      - name: Run scraper and upload to S3
+      - name: Run scrapper and upload to S3
         run: python scrapper/main.py
