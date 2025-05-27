@@ -16,8 +16,8 @@ def main():
     # for each city
     for city in cities:
         # Test initially with one city
-        if city not in ("nunoa", "las-condes", "vitacura"): #("nunoa")
-            continue
+        # if city not in ("nunoa", "las-condes", "vitacura"): #("nunoa")
+        #    continue
 
         # scrape and save all the data
         apartments_data = scrapper.get_global_data(city=city)

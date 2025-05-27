@@ -2,7 +2,6 @@ import requests
 import time
 from constants import *
 from bs4 import BeautifulSoup
-from selenium import webdriver
 from urllib.parse import urlparse, parse_qs
 
 # As a starting point, assume the "From" values
@@ -32,6 +31,7 @@ class Scrapper:
                 print(f"City: {self.city}, Page: {page}, URL: {url}")
 
                 page_data = self.get_page_data(url)
+                time.sleep(0.5)
                 global_data.append(page_data)
                 page += 1
 
@@ -52,12 +52,12 @@ class Scrapper:
         try:
             data = self._parse_and_get_items(response)
             if not data:
-                time.sleep(3)
+                time.sleep(1)
                 print(f"trying AGAIN for city: {self.city}")
                 data = self.get_page_data(url)
 
         except AttributeError:
-            time.sleep(3)
+            time.sleep(1)
             print(f"trying AGAIN for city: {self.city}")
             data = self.get_page_data(url)
 
